@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elvex Investment Justification - Affordable Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-primary: #1A1A1A;
+            --brand-secondary: #F5F5DC;
+            --brand-accent: #696969;
+            --brand-light: #F8F9FA;
+            --brand-success: #10B981;
+            --brand-blue: #3B82F6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--brand-light) 0%, var(--brand-secondary) 100%);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--brand-primary) 0%, #2D2D2D 100%);
+        }
+        .section-title {
+            color: var(--brand-primary);
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--brand-success), var(--brand-blue));
+            border-radius: 2px;
+        }
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 0.08em;
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.16);
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, var(--brand-success) 0%, var(--brand-blue) 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+        .metric-highlight {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border: 2px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+        .kpi-card {
+            background: linear-gradient(135deg, var(--brand-primary) 0%, #2D2D2D 100%);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(26, 26, 26, 0.1);
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(26, 26, 26, 0.2);
+        }
+        .stat-number {
+            font-weight: 900;
+            font-size: 3.5rem;
+            line-height: 1;
+            color: var(--brand-secondary);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .step-circle {
+            background: linear-gradient(135deg, var(--brand-primary) 0%, #2D2D2D 100%);
+            color: var(--brand-secondary);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(26, 26, 26, 0.2);
+        }
+        .step-circle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(26, 26, 26, 0.3);
+        }
+        .card-enhanced {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(26, 26, 26, 0.05);
+        }
+        .card-enhanced:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        .no-gap {
+            gap: 0 !important;
+        }
+        .chart-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            border: 1px solid rgba(26, 26, 26, 0.05);
+        }
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: var(--brand-primary);
+            color: white;
+            font-weight: 600;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with elvex Text -->
+    <header class="hero-gradient text-white text-center p-8 md:p-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="mb-6 flex justify-center">
+                <span class="logo-text select-none">elvex</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">A Strategic Investment in Efficiency</h1>
+            <h2 class="text-xl md:text-2xl font-light opacity-90">Board Justification for elvex at Affordable Care</h2>
+            <div class="mt-8 inline-block px-6 py-2 bg-white bg-opacity-20 rounded-full text-sm font-medium">
+                Transforming Healthcare Operations with AI
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+        <!-- Executive Summary -->
+        <section id="executive-summary" class="text-center max-w-5xl mx-auto mb-16">
+            <h2 class="text-4xl font-bold mb-8 section-title">Executive Summary</h2>
+            <div class="highlight-box text-lg leading-relaxed">
+                <p id="executiveSummaryText" class="mb-4">
+                    Affordable Care's proposed investment in elvex is a pivotal initiative to unlock significant, recurring cost savings through AI-powered automation. By reducing manual administrative workload and minimizing errors, we can directly enhance our bottom line.
+                </p>
+                <p class="mb-4">
+                    Real-world case studies show up to <span class="font-bold text-2xl">30%</span> efficiency gains and a <span class="font-bold text-2xl">70%+</span> workforce adoption, making this a low-risk, high-reward opportunity.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div class="metric-highlight bg-white bg-opacity-20">
+                        <span class="font-bold text-2xl">30%</span> efficiency gains
+                    </div>
+                    <div class="metric-highlight bg-white bg-opacity-20">
+                        <span class="font-bold text-2xl">70%+</span> workforce adoption
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- KPI Cards -->
+        <section id="kpis" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 text-center">
+            <div class="kpi-card rounded-2xl shadow-xl p-8">
+                <div class="stat-number">$360K</div>
+                <div class="mt-3 text-lg font-semibold opacity-90">Annual Savings</div>
+                <div class="mt-2 text-sm opacity-70">Projected Year 1</div>
+            </div>
+            <div class="kpi-card rounded-2xl shadow-xl p-8">
+                <div class="stat-number">4.5x</div>
+                <div class="mt-3 text-lg font-semibold opacity-90">Return on Investment</div>
+                <div class="mt-2 text-sm opacity-70">First Year ROI</div>
+            </div>
+            <div class="kpi-card rounded-2xl shadow-xl p-8">
+                <div class="stat-number">&lt;3</div>
+                <div class="mt-3 text-lg font-semibold opacity-90">Months to Payback</div>
+                <div class="mt-2 text-sm opacity-70">Rapid Value Realization</div>
+            </div>
+            <div class="kpi-card rounded-2xl shadow-xl p-8">
+                <div class="stat-number">6</div>
+                <div class="mt-3 text-lg font-semibold opacity-90">FTEs of Time Saved</div>
+                <div class="mt-2 text-sm opacity-70">Equivalent Capacity</div>
+            </div>
+        </section>
+        
+        <!-- Financial Impact Section with generated charts -->
+        <section id="financials" class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-12 section-title">The Financial Impact: A Clear Case for Investment</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="chart-container h-[28rem]">
+                    <canvas id="savingsVsInvestmentChart"></canvas>
+                </div>
+                <div class="chart-container h-[28rem]">
+                    <canvas id="roiBreakdownChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3-Year ROI and AI Adoption generated charts -->
+        <section id="three-year-roi" class="mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="chart-container h-[28rem]">
+                    <canvas id="threeYearRoiChart"></canvas>
+                </div>
+                <div class="chart-container h-[28rem]">
+                    <canvas id="aiAdoptionChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supporting Evidence with generated charts -->
+        <section id="evidence" class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-12 section-title">Supporting Evidence: Proven Success</h2>
+            <div class="highlight-box text-center mb-12" style="background: linear-gradient(90deg, #10B981 0%, #3B82F6 100%);">
+                <p class="text-lg leading-relaxed">
+                    The financial model is strongly supported by real-world data. The <strong>Embark case study</strong> highlights the platform's ability to drive tangible results in efficiency and employee adoption, demonstrating a clear path to value for Affordable Care.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="chart-container h-[28rem]">
+                    <canvas id="caseStudyChart"></canvas>
+                </div>
+                <div class="chart-container h-[28rem]">
+                    <canvas id="savingsBreakdownChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Sources & Methodology Section -->
+        <section id="data-sources" class="mb-16">
+            <h2 class="text-4xl font-bold text-left mb-8 section-title">Data Sources &amp; Methodology</h2>
+            <div class="card-enhanced p-8">
+                <p class="text-gray-700 mb-6"><strong>MIT Study Data:</strong> Based on Project NANDA research published July 2025, examining 300+ publicly disclosed AI initiatives and surveying 153 senior leaders across four major industry conferences.</p>
+                <p class="text-gray-700 mb-6"><strong>Case Study Metrics:</strong> Sourced from published elvex customer case studies including Embark Consulting, McClatchy Media, Movable Ink, and WordPress VIP. Metrics verified through structured customer interviews.</p>
+                <p class="text-gray-700 mb-6"><strong>Healthcare Projections:</strong> Based on industry automation benchmarks, healthcare administrative cost studies, and adjusted for Affordable Care's operational scale and complexity.</p>
+                <h3 class="text-xl font-bold mb-4">Detailed Financial Projections</h3>
+                <div class="overflow-x-auto rounded-lg">
+                    <table class="w-full text-sm text-gray-700">
+                        <thead class="text-xs text-white uppercase bg-brand-primary">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Year</th>
+                                <th scope="col" class="px-6 py-3">Investment</th>
+                                <th scope="col" class="px-6 py-3">Operational Savings</th>
+                                <th scope="col" class="px-6 py-3">Systems we can displace</th>
+                                <th scope="col" class="px-6 py-3">Total Savings</th>
+                                <th scope="col" class="px-6 py-3">Net Benefit</th>
+                                <th scope="col" class="px-6 py-3">Cumulative ROI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900">1</td>
+                                <td class="px-6 py-4">$85,000</td>
+                                <td class="px-6 py-4">$187,500</td>
+                                <td class="px-6 py-4">$25,000</td>
+                                <td class="px-6 py-4">$212,500</td>
+                                <td class="px-6 py-4">$127,500</td>
+                                <td class="px-6 py-4 text-green-600">150%</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900">2</td>
+                                <td class="px-6 py-4">$170,000</td>
+                                <td class="px-6 py-4">$757,500</td>
+                                <td class="px-6 py-4">$50,000</td>
+                                <td class="px-6 py-4">$807,500</td>
+                                <td class="px-6 py-4">$637,500</td>
+                                <td class="px-6 py-4 text-green-600">300%</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900">3</td>
+                                <td class="px-6 py-4">$300,000</td>
+                                <td class="px-6 py-4">$2,235,000</td>
+                                <td class="px-6 py-4">$75,000</td>
+                                <td class="px-6 py-4">$2,310,000</td>
+                                <td class="px-6 py-4">$2,010,000</td>
+                                <td class="px-6 py-4 text-green-600">500%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Keep the following sections and styling as before -->
+        <section id="fit-and-risks" class="mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card-enhanced p-8">
+                    <h3 class="text-3xl font-bold section-title mb-6">Why elvex is the Right Fit</h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-start p-3 bg-green-50 rounded-lg"><span class="text-green-600 font-bold mr-4 text-xl">✓</span> <span>Addresses our key pain points like manual pricing and patient management, which are ripe for automation.</span></li>
+                        <li class="flex items-start p-3 bg-green-50 rounded-lg"><span class="text-green-600 font-bold mr-4 text-xl">✓</span> <span>Aligns perfectly with the goals of our AI committee to reduce administrative burden and improve decision support.</span></li>
+                        <li class="flex items-start p-3 bg-green-50 rounded-lg"><span class="text-green-600 font-bold mr-4 text-xl">✓</span> <span>Features a usage-based pricing model with no seat penalty, allowing universal access and maximizing value.</span></li>
+                        <li class="flex items-start p-3 bg-green-50 rounded-lg"><span class="text-green-600 font-bold mr-4 text-xl">✓</span> <span>Integrates with existing systems and scales seamlessly across all our clinics.</span></li>
+                    </ul>
+                </div>
+                <div class="card-enhanced p-8">
+                    <h3 class="text-3xl font-bold section-title mb-6">Mitigated Risks</h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-start p-3 bg-blue-50 rounded-lg"><span class="text-blue-600 font-bold mr-4 text-xl">🛡️</span> <div><strong>Security & Compliance:</strong> Enterprise-grade security with HIPAA compliance, critical for healthcare operations.</div></li>
+                        <li class="flex items-start p-3 bg-blue-50 rounded-lg"><span class="text-blue-600 font-bold mr-4 text-xl">📈</span> <div><strong>Proven Change Management:</strong> Vendor-led onboarding and CSM support de-risks implementation and accelerates ROI.</div></li>
+                        <li class="flex items-start p-3 bg-blue-50 rounded-lg"><span class="text-blue-600 font-bold mr-4 text-xl">📊</span> <div><strong>Full Transparency:</strong> Workflow analytics and audit logs provide optimization data and support regulatory reporting.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Steps Section -->
+        <section id="next-steps" class="card-enhanced p-12 mb-8">
+            <h2 class="text-4xl font-bold text-center mb-10 section-title">Next Steps: The Path Forward</h2>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-12 text-center">
+                <div class="flex flex-col items-center max-w-xs">
+                    <div class="step-circle rounded-full h-20 w-20 flex items-center justify-center text-3xl font-bold mb-4">1</div>
+                    <p class="font-bold text-xl mb-2">Approve elvex Investment</p>
+                    <p class="text-gray-600 leading-relaxed">Unlock immediate and ongoing operational savings with board approval.</p>
+                </div>
+                <div class="text-5xl text-gray-300 hidden md:block transform rotate-12">→</div>
+                <div class="flex flex-col items-center max-w-xs">
+                    <div class="step-circle rounded-full h-20 w-20 flex items-center justify-center text-3xl font-bold mb-4">2</div>
+                    <p class="font-bold text-xl mb-2">Empower AI Committee</p>
+                    <p class="text-gray-600 leading-relaxed">Drive adoption across the organization and establish success metrics.</p>
+                </div>
+                <div class="text-5xl text-gray-300 hidden md:block transform rotate-12">→</div>
+                <div class="flex flex-col items-center max-w-xs">
+                    <div class="step-circle rounded-full h-20 w-20 flex items-center justify-center text-3xl font-bold mb-4">3</div>
+                    <p class="font-bold text-xl mb-2">Report on Realized Value</p>
+                    <p class="text-gray-600 leading-relaxed">Provide regular updates to the board on performance and ROI achievement.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer with elvex Text -->
+    <footer class="text-center p-8 hero-gradient text-white">
+        <div class="mb-4 flex justify-center">
+            <span class="logo-text select-none">elvex</span>
+        </div>
+        <p class="opacity-80">Affordable Care | Strategic Proposal for AI-Powered Efficiency</p>
+        <p class="text-sm opacity-60 mt-2">Prepared for Board Review</p>
+    </footer>
+    <script>
+        // Data for the charts, extracted from the images
+        const chartData = {
+            financials: {
+                savingsVsInvestment: {
+                    labels: ['elvex Investment', 'Projected Annual Savings'],
+                    data: [80000, 360000],
+                    colors: ['#1A1A1A', '#10B981'],
+                    title: 'Projected Savings vs. Investment',
+                    text: 'Based on a conservative 20% reduction in manual workload for our administrative staff, the projected annual savings of $360,000 vastly outweigh the platform’s $80,000 annual cost.',
+                },
+                roiBreakdown: {
+                    labels: ['Investment (22%)', 'Net Savings (78%)'],
+                    data: [22, 78],
+                    colors: ['#1A1A1A', '#3B82F6'],
+                    title: 'Return on Investment (ROI) Breakdown',
+                    text: 'The elvex investment represents just 22% of the total financial value realized in the first year. The remaining 78% constitutes pure net savings, directly benefiting our bottom line.',
+                },
+            },
+            threeYear: {
+                financialProjection: {
+                    labels: ['Year 1', 'Year 2', 'Year 3'],
+                    investment: [85000, 170000, 300000],
+                    savings: [212500, 807500, 2310000],
+                    roi: [150, 300, 500],
+                    title: '3-Year Financial Projection',
+                },
+                aiAdoption: {
+                    labels: ['Pilot Stage', 'Sustained Adoption'],
+                    industry: [60, 5],
+                    elvex: [90, 68],
+                    title: 'AI Adoption Success Rates',
+                }
+            },
+            evidence: {
+                caseStudy: {
+                    labels: ['WordPress VIP', 'Movable Ink', 'McClatchy Media', 'Embark Consulting'],
+                    adoption: [70, 60, 65, 72],
+                    efficiency: [50, 40, 35, 30],
+                    title: 'Case Study Performance Results',
+                },
+                savingsBreakdown: {
+                    labels: ['Claims Processing', 'Member Services', 'Prior Authorization', 'Cost Avoidance', 'Quality Improvements'],
+                    data: [20, 15, 10, 45, 10], // Estimated based on chart visual
+                    colors: ['#EF4444', '#3B82F6', '#F59E0B', '#10B981', '#6B21A8'],
+                    title: 'Healthcare Savings Breakdown',
+                }
+            }
+        };
+
+        // Function to create a bar chart
+        const createBarChart = (canvasId, title, labels, datasets) => {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        title: {
+                            display: true,
+                            text: title,
+                            font: { size: 16 }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        };
+
+        // Function to create a pie/doughnut chart
+        const createPieChart = (canvasId, title, labels, data, colors) => {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: colors,
+                        borderWidth: 1,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        title: {
+                            display: true,
+                            text: title,
+                            font: { size: 16 }
+                        }
+                    }
+                }
+            });
+        };
+
+        // Function to create a mixed line/bar chart
+        const createMixedChart = (canvasId, title, labels, barData, lineData) => {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Investment ($)',
+                            data: barData[0],
+                            backgroundColor: 'rgba(239, 68, 68, 1)',
+                            order: 1
+                        },
+                        {
+                            label: 'Savings ($)',
+                            data: barData[1],
+                            backgroundColor: 'rgba(16, 185, 129, 1)',
+                            order: 1
+                        },
+                        {
+                            label: 'Cumulative ROI (%)',
+                            data: lineData,
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                            type: 'line',
+                            yAxisID: 'roi',
+                            fill: false,
+                            tension: 0.3,
+                            order: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: title,
+                            font: { size: 16 }
+                        },
+                        legend: {
+                            position: 'bottom',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Amount ($)'
+                            },
+                        },
+                        roi: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'ROI (%)'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    }
+                }
+            });
+        };
+
+        // Create the charts on window load
+        window.onload = function() {
+            // Financials Section Charts
+            createBarChart('savingsVsInvestmentChart', chartData.financials.savingsVsInvestment.title, chartData.financials.savingsVsInvestment.labels, [{
+                label: 'Financials',
+                data: chartData.financials.savingsVsInvestment.data,
+                backgroundColor: chartData.financials.savingsVsInvestment.colors,
+                borderRadius: 5,
+            }]);
+
+            createPieChart('roiBreakdownChart', chartData.financials.roiBreakdown.title, chartData.financials.roiBreakdown.labels, chartData.financials.roiBreakdown.data, chartData.financials.roiBreakdown.colors);
+
+            // 3-Year ROI and AI Adoption Charts
+            createMixedChart('threeYearRoiChart', chartData.threeYear.financialProjection.title, chartData.threeYear.financialProjection.labels, [chartData.threeYear.financialProjection.investment, chartData.threeYear.financialProjection.savings], chartData.threeYear.financialProjection.roi);
+
+            createBarChart('aiAdoptionChart', chartData.threeYear.aiAdoption.title, chartData.threeYear.aiAdoption.labels, [{
+                label: 'Industry Average',
+                data: chartData.threeYear.aiAdoption.industry,
+                backgroundColor: 'rgba(239, 68, 68, 1)',
+                borderRadius: 5,
+            }, {
+                label: 'elvex Customers',
+                data: chartData.threeYear.aiAdoption.elvex,
+                backgroundColor: 'rgba(16, 185, 129, 1)',
+                borderRadius: 5,
+            }]);
+
+            // Supporting Evidence Charts
+            createBarChart('caseStudyChart', chartData.evidence.caseStudy.title, chartData.evidence.caseStudy.labels, [{
+                label: 'Adoption Rate',
+                data: chartData.evidence.caseStudy.adoption,
+                backgroundColor: 'rgba(59, 130, 246, 1)',
+                borderRadius: 5,
+            }, {
+                label: 'Efficiency Improvement',
+                data: chartData.evidence.caseStudy.efficiency,
+                backgroundColor: 'rgba(245, 158, 11, 1)',
+                borderRadius: 5,
+            }]);
+
+            createPieChart('savingsBreakdownChart', chartData.evidence.savingsBreakdown.title, chartData.evidence.savingsBreakdown.labels, chartData.evidence.savingsBreakdown.data, chartData.evidence.savingsBreakdown.colors);
+        };
+    </script>
+</body>
+</html>
